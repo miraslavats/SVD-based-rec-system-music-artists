@@ -33,5 +33,13 @@ Once we have decomposed the original matrix into three matrices, we can multiply
 In conclusion, by training the model on the known ratings (Trying different SVDs to calculate the error), we are trying to minimise RMSE.This way we will be able to predict the unknown ratings somewhat accurately. 
 
 ## Explanation of my coding implementation
-In my code, I am using surprise library to calculate and train 
+In my code, I am using surprise library to train, test, and evaluate the SVD model. In the SVD() surprise fnction I am specifying two parameters: n_factors and n_epochs. n_factors determines the number of latent factors (genres, mood, etc) the model has. The greater the number, the more nuanced the model is since it is able to capture slight differences in music artists' genres or the users' preferences better. However, with a bigger number icreases the risk of overfitting (that is the model fits the training data too well and is able to make less accurate predictions on the unseen data). The other parameter I specified was n_epochs. This parameter determines how many "trials" the algorithm takes to determine the optimal SVD. Both these parameters have an impact on the run time and performance of the model. This is why I tried several different combinations to determine the parameters that both have a good performance (minimise RMSE) and do not run endlessly. These are the results I got:
+<img width="776" alt="Screenshot 2023-06-27 at 7 40 31 PM" src="https://github.com/miraslavats/SVD-based-rec-system-music-artists/assets/112869592/722dbac2-ca9f-464f-97b3-c0c4db97eadc">
+<img width="776" alt="Screenshot 2023-06-27 at 7 40 52 PM" src="https://github.com/miraslavats/SVD-based-rec-system-music-artists/assets/112869592/fc80ae92-fb77-48d2-afcf-c3dc89be24f0">
 
+After training and evaluating the model, I used it to make predictions for a specific user and find the n most highly predicted artists to recommend:
+
+<img width="746" alt="Screenshot 2023-06-27 at 7 44 08 PM" src="https://github.com/miraslavats/SVD-based-rec-system-music-artists/assets/112869592/9e8ca16c-5557-4d00-8d65-09aba06a8bb8">
+
+The full code and more explanation can be found in the .ipynb file.
+I used Last FM 360K users dataset.
