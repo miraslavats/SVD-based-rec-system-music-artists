@@ -23,8 +23,15 @@ In this file, I will talk about the following:
    b. Model-based:
       - Deep learning
       - Matrix factorization:
-        In matrix factorization approach we are essentially breaking down our "user_id, item_id, rating" matrix into two lower dimensional matrices and mapping the users and items onto the space of n factors. These factores can be genres (how much a particular movie represents a certain genre/how much the user likes the certain genre), mood (what kind of mood a particular song has/how much the user likes the songs in this mood), etc. Breaking down the "user_id, item_id, rating" matrix into two, we are representing each user and item as a datapoint in the 3-dimensional space of these n factors (genre, mood, etc).
+        In matrix factorization approach we are essentially breaking down our "user_id, item_id, rating" matrix into three lower dimensional matrices and mapping the users and items onto the space of n factors. These factores can be genres (how much a particular movie represents a certain genre/how much the user likes the certain genre), mood (what kind of mood a particular song has/how much the user likes the songs in this mood), etc. Breaking down the "user_id, item_id, rating" matrix into two, we are representing each user and item as a datapoint in the 3-dimensional space of these n factors (genre, mood, etc).
+
 ### What is SVD?
 SVD - Singular Value Decomposition of a matrix into three matrices ("itemsXnfactors", "nfactorsXusers", "eigenvalues" matrix). In the paragraph above I talked about the first two matrices, which map items and users as datapoints onto the three-dimensional space of the n factors. With regards to the "eigenvalues" matrix, this matrix represents the "strength/importance" of each factor in determining the item's rating. 
+
 ## How is SVD matrix decomposition used in recommendation systems?
+Once we have decomposed the original matrix into three matrices, we can multiply them by each other to get the original matrix. For example, if we want to know the approximate rating user 5 gave to artist 3, we need to get the dot porduct of the corresponding row and column in the two lower dimensional matrices. SVD is able to estimate this rating pretty well since it minimises SSE (Sum of Square Error). However, SVD is not defined for the missing values we want to estimate. Therefore, we can train the model on the known ratings so that we will be able to predict the unknown ones. Hence, our objective is to minimise the difference between the given rating and the one the model estimates. This difference can be quantified using RSME (Root Mean Square Error), thus, our objective would be to minimise RMSE. Once we minimise RMSE on the known ratings, we will be able to predict the unknown ratings as well!
+In conclusion, by training the model on the known ratings (Trying different SVDs to calculate the error), we are trying to minimise RMSE.This way we will be able to predict the unknown ratings somewhat accurately. 
+
+## Explanation of my coding implementation
+In my code, I am using surprise library to calculate and train 
 
