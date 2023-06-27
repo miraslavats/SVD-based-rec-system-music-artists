@@ -6,9 +6,9 @@ As I was researching, I came across model-based recommendation systems which ten
 In this file, I will talk about the following:
 
 1. Types of recommendation systems;
-2. What is SVD?;
-3. How is SVD matrix decomposition used in recommendation systems;
-4. Explanation of my coding implementation;
+   a. What is SVD?;
+2. How is SVD matrix decomposition used in recommendation systems;
+3. Explanation of my coding implementation;
 
 ## Types of recommendation systems
 1. Content-based recommendation systems:
@@ -19,5 +19,12 @@ In this file, I will talk about the following:
        Such system finds users that are similar to the given user based on the ratings they have given, then it proposes the items the similar users liked. 
      - User-user filtering:
        This system takes in an item and finds other items that users who liked the input item also liked, then it returns those similar items.
-   While memory-based systems do not require training and are based on a measure such as 
+   While memory-based systems do not require training and are based on arithmetic operations (cosine similarity, etc), their performance drops as there are more users and items. As the new items and users are added, the number of arithmetic operations needed to assess the user-user or item-item similarity rises as well, leading to a signifocant increase in run time.
    b. Model-based:
+      - Deep learning
+      - Matrix factorization:
+        In matrix factorization approach we are essentially breaking down our "user_id, item_id, rating" matrix into two lower dimensional matrices and mapping the users and items onto the space of n factors. These factores can be genres (how much a particular movie represents a certain genre/how much the user likes the certain genre), mood (what kind of mood a particular song has/how much the user likes the songs in this mood), etc. Breaking down the "user_id, item_id, rating" matrix into two, we are representing each user and item as a datapoint in the 3-dimensional space of these n factors (genre, mood, etc).
+### What is SVD?
+SVD - Singular Value Decomposition of a matrix into three matrices ("itemsXnfactors", "nfactorsXusers", "eigenvalues" matrix). In the paragraph above I talked about the first two matrices, which map items and users as datapoints onto the three-dimensional space of the n factors. With regards to the "eigenvalues" matrix, this matrix represents the "strength/importance" of each factor in determining the item's rating. 
+## How is SVD matrix decomposition used in recommendation systems?
+
