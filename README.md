@@ -31,6 +31,7 @@ SVD - Singular Value Decomposition of a matrix into three matrices ("itemsXnfact
 ## How is SVD matrix decomposition used in recommendation systems?
 Once we have decomposed the original matrix into three matrices, we can multiply them by each other to get the original matrix. For example, if we want to know the approximate rating user 5 gave to artist 3, we need to get the dot porduct of the corresponding row and column in the two lower dimensional matrices. SVD is able to estimate this rating pretty well since it minimises SSE (Sum of Square Error). However, SVD is not defined for the missing values we want to estimate. Therefore, we can train the model on the known ratings so that we will be able to predict the unknown ones. Hence, our objective is to minimise the difference between the given rating and the one the model estimates. This difference can be quantified using RSME (Root Mean Square Error), thus, our objective would be to minimise RMSE:
 <img width="503" alt="Screenshot 2023-06-28 at 8 06 50 PM" src="https://github.com/miraslavats/SVD-based-rec-system-music-artists/assets/112869592/3bdcdfc2-111e-46f1-be5b-5e1a3be9212c">
+
 Once we minimise RMSE on the known ratings, we will be able to predict the unknown ratings as well!
 In conclusion, by training the model on the known ratings (Trying different SVDs to calculate the error), we are trying to minimise RMSE.This way we will be able to predict the unknown ratings somewhat accurately. 
 
