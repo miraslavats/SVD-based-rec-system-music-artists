@@ -42,4 +42,9 @@ After training and evaluating the model, I used it to make predictions for a spe
 <img width="746" alt="Screenshot 2023-06-27 at 7 44 08 PM" src="https://github.com/miraslavats/SVD-based-rec-system-music-artists/assets/112869592/9e8ca16c-5557-4d00-8d65-09aba06a8bb8">
 
 The full code and more explanation can be found in the .ipynb file.
-I used Last FM 360K users dataset.
+I used [Last FM](https://www.last.fm) [360K users dataset](http://ocelma.net/MusicRecommendationDataset/lastfm-360K.html).
+## References
+1. Steve Huang; January 24th, 2018; "Introduction to Recommender System. Part 1 (Collaborative Filtering, Singular Value Decomposition)"; https://hackernoon.com/introduction-to-recommender-system-part-1-collaborative-filtering-singular-value-decomposition-44c9659c5e75;
+2. Microsoft Corporation; 2021; "Surprise Singular Value Decomposition (SVD)"; https://github.com/microsoft/recommenders/blob/main/examples/02_model_collaborative_filtering/surprise_svd_deep_dive.ipynb
+3. Artificial Intelligence - All in One; "Mining Massive Datasets - Stanford University"; April 13, 2016; https://www.youtube.com/watch?v=HY3Csl52PfE
+4. Nick Becker; November 10, 2016; "Matrix Factorization for Movie Recommendations in Python"; https://beckernick.github.io/matrix-factorization-recommender/
